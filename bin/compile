@@ -7,6 +7,10 @@ set -e
 # debug
 # set -x
 
+# preserve git directory, which is in /app/repo.git
+# GIT_DIR is '.', otherwise it would be good to join'em
+export APPLICATION_GIT_DIR=`pwd`
+
 # clean up leaking environment
 unset GIT_DIR
 
@@ -174,6 +178,10 @@ run_npm "rebuild"
 echo "Dependencies installed" | indent
 
 echo "-----> Building runtime environment"
+if [ -f /app/tmp/push_metadata.yml ]; then
+  export APPLICATION_PUSH_METADATA_FILE="/app/tmp/push_metadata.yml"
+fi;
+export APPLICATION_TMP_REPODIR=$(mktmpdir actual_repository)
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
 
