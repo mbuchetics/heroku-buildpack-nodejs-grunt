@@ -45,8 +45,8 @@ else
 fi
 
 # Download node from Heroku's S3 mirror of nodejs.org/dist
-if [ -d $build_dir/vendor/node ]; then
-  status "Using detected Node installation"
+if test -d $build_dir/vendor/node; then
+  status "Found existing Node installation"
 else
   status "Downloading and installing node"
   node_url="http://s3pository.heroku.com/node/v$node_version/node-v$node_version-linux-x64.tar.gz"
