@@ -44,7 +44,8 @@ else
   status "Resolved node version: $node_version"
 fi
 
-# Download node from Heroku's S3 mirror of nodejs.org/dist
+# If Node is already installed, use that installtion
+# Otherwise download node from Heroku's S3 mirror of nodejs.org/dist
 if test -d $build_dir/vendor/node; then
   status "Found existing Node installation"
 else
