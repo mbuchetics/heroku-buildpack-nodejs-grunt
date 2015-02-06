@@ -48,11 +48,11 @@ Set the `NODE_ENV` environment variable (e.g. `development` or `production`):
 
 Create your Node.js app and add a Gruntfile named  `Gruntfile.js` (or `Gruntfile.coffee` if you want to use CoffeeScript, or `grunt.js` if you are using Grunt 0.3) with a `heroku` task:
 
-    grunt.registerTask('heroku:development', 'clean less mincss');
+    grunt.registerTask('heroku:development', 'heroku-env clean less mincss');
     
 or
 
-    grunt.registerTask('heroku:production', 'clean less mincss uglify');
+    grunt.registerTask('heroku:production', 'heroku-env clean less mincss uglify');
 
 Don't forget to add grunt to your dependencies in `package.json`. If your grunt tasks depend on other pre-defined tasks make sure to add these dependencies as well:
 
