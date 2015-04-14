@@ -80,10 +80,10 @@ fi
 
 # Handle npm's new cert bug
 # http://blog.npmjs.org/post/78085451721/npms-self-signed-certificate-is-no-more
-if [ ! -f "$build_dir/.npmrc" ]; then
-  status "Writing a custom .npmrc to circumvent npm bugs"
-  echo "ca=" > "$build_dir/.npmrc"
-fi
+#if [ ! -f "$build_dir/.npmrc" ]; then
+#  status "Writing a custom .npmrc to circumvent npm bugs"
+#  echo "ca=" > "$build_dir/.npmrc"
+#fi
 
 # Scope config var availability only to `npm install`
 (
