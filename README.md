@@ -1,5 +1,20 @@
-Heroku buildpack: Node.js with grunt support
+Heroku buildpack: Node.js with Grunt support
 ============================================
+
+Note: this buildpack is no longer maintained
+------------
+
+Using [Heroku's official Node.js buildpack](https://github.com/heroku/heroku-buildpack-nodejs) with a `postinstall` script, that executes your Gruntfile is the suggested way on building Node.js with Grunt.
+
+Follow the [official guide](https://devcenter.heroku.com/articles/node-with-grunt) for details and instructions.
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+(outdated) Introduction
+------------
 
 Supported Grunt versions: 0.3 and 0.4.
 See the Grunt [migration guide](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) if you are upgrading from 0.3.
