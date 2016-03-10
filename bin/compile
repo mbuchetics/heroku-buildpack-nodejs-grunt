@@ -80,10 +80,10 @@ fi
 
 # Handle npm's new cert bug
 # http://blog.npmjs.org/post/78085451721/npms-self-signed-certificate-is-no-more
-if [ ! -f "$build_dir/.npmrc" ]; then
-  status "Writing a custom .npmrc to circumvent npm bugs"
-  echo "ca=" > "$build_dir/.npmrc"
-fi
+#if [ ! -f "$build_dir/.npmrc" ]; then
+#  status "Writing a custom .npmrc to circumvent npm bugs"
+#  echo "ca=" > "$build_dir/.npmrc"
+#fi
 
 # Scope config var availability only to `npm install`
 (
@@ -146,6 +146,15 @@ status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
 
+# Check and run Bower
+(
+  if [ -f $build_dir/bower.json ]; then
+    status "Installing bower components"
+    npm install bower
+    echo "-----> Found bower.json, running bower install"
+    $build_dir/node_modules/.bin/bower install
+  fi
+)
 # Check and run Grunt
 (
   if [ -f $build_dir/grunt.js ] || [ -f $build_dir/Gruntfile.js ] || [ -f $build_dir/gruntfile.js ] || [ -f $build_dir/Gruntfile.coffee ]; then
