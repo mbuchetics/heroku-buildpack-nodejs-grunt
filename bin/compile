@@ -156,8 +156,7 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     fi
 
     # make sure that grunt and grunt-cli are installed locally
-    npm install grunt-cli
-    npm install grunt
+    npm install --userconfig $build_dir/.npmrc grunt-cli grunt
     echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
     $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
 
